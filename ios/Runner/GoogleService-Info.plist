@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>443151987152-o501ovbnck1e32emsdbnr57iaqkkisv9.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.443151987152-o501ovbnck1e32emsdbnr57iaqkkisv9</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>443151987152-gtgb8n6plul3k8u1vim4cgl0qhap9031.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDcD3tN6f0_Hnm06kY_dGooJwlBNsQJtVY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>443151987152</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>net.tanphat.chocaycanh</string>
+	<key>PROJECT_ID</key>
+	<string>longgym-b6a9a</string>
+	<key>STORAGE_BUCKET</key>
+	<string>longgym-b6a9a.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:443151987152:ios:738d4dc34450556aa2c9d5</string>
+</dict>
+</plist>

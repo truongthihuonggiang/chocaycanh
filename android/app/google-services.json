@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "443151987152",
+    "project_id": "longgym-b6a9a",
+    "storage_bucket": "longgym-b6a9a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:443151987152:android:0fd6a83a37ddc82ea2c9d5",
+        "android_client_info": {
+          "package_name": "net.tanphat.chocaycanh"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "443151987152-gtgb8n6plul3k8u1vim4cgl0qhap9031.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "net.tanphat.chocaycanh",
+            "certificate_hash": "86e2c6a5979ac916493598c45c16693cc00029a3"
+          }
+        },
+        {
+          "client_id": "443151987152-1jf2c4e9nher57ohc0br98rnpjlb6lql.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUU6eg574A1ekSDrRJvX4y2gMQM2JOu0A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "443151987152-1jf2c4e9nher57ohc0br98rnpjlb6lql.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
