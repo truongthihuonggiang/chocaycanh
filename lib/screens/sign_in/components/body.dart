@@ -5,7 +5,7 @@ import 'package:chocaycanh/constants.dart';
 import 'package:chocaycanh/screens/EmailConform/email_conform.dart';
 import 'package:chocaycanh/screens/login_success/login_success_screen.dart';
 import 'package:chocaycanh/screens/sign_in/components/sign_form.dart';
-import 'package:chocaycanh/screens/sign_in/sign_in_screen.dart';
+
 import 'package:chocaycanh/size_config.dart';
 import 'package:chocaycanh/token.dart';
 import 'package:flutter/material.dart';
@@ -28,43 +28,48 @@ class Body extends StatelessWidget {
       child: Padding(
         padding:
             EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(
-                height: SizeConfig.screenHeight * 0.02,
-              ),
-              Text(
-                "Chào bạn quay trở lại",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: getProportionateScreenWidth(28),
-                    fontWeight: FontWeight.bold),
-              ),
-              Text(
-                "Đăng nhập bằng tên và email \nhoặc bằng tài khoản mạng xã hội",
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(
-                height: SizeConfig.screenHeight * 0.08,
-              ),
-              SignForm(),
-              SizedBox(
-                height: SizeConfig.screenHeight * 0.08,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  GoogleCard(),
-                  FacebookCard(),
-                  AplleCard(),
-                ],
-              ),
-              SizedBox(
-                height: getProportionateScreenHeight(20),
-              ),
-              NoAccountText()
-            ],
+        child: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).requestFocus(new FocusNode());
+          },
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: SizeConfig.screenHeight * 0.02,
+                ),
+                Text(
+                  "Chào bạn quay trở lại",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: getProportionateScreenWidth(28),
+                      fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  "Đăng nhập bằng tên và email \nhoặc bằng tài khoản mạng xã hội",
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(
+                  height: SizeConfig.screenHeight * 0.08,
+                ),
+                SignForm(),
+                SizedBox(
+                  height: SizeConfig.screenHeight * 0.08,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    GoogleCard(),
+                    FacebookCard(),
+                    AplleCard(),
+                  ],
+                ),
+                SizedBox(
+                  height: getProportionateScreenHeight(20),
+                ),
+                NoAccountText()
+              ],
+            ),
           ),
         ),
       ),

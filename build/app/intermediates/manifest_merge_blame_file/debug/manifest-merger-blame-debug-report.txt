@@ -1,0 +1,286 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="net.tanphat.chocaycanh"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="16"
+9        android:targetSdkVersion="29" />
+10    <!--
+11         Flutter needs it to communicate with the running application
+12         to allow setting breakpoints, to provide hot reload, etc.
+13    -->
+14    <uses-permission android:name="android.permission.INTERNET" />
+14-->D:\fluter\ios\chocaycanh\android\app\src\debug\AndroidManifest.xml:6:5-66
+14-->D:\fluter\ios\chocaycanh\android\app\src\debug\AndroidManifest.xml:6:22-64
+15    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+15-->[:image_picker] D:\fluter\ios\chocaycanh\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-80
+15-->[:image_picker] D:\fluter\ios\chocaycanh\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:7:22-77
+16    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+16-->[:image_picker] D:\fluter\ios\chocaycanh\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-81
+16-->[:image_picker] D:\fluter\ios\chocaycanh\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:8:22-78
+17    <!--
+18 io.flutter.app.FlutterApplication is an android.app.Application that
+19         calls FlutterMain.startInitialization(this); in its onCreate method.
+20         In most cases you can leave this as-is, but you if you want to provide
+21         additional functionality it is fine to subclass or reimplement
+22         FlutterApplication and put your custom class here.
+23    -->
+24    <application
+24-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:8:5-76:19
+25        android:name="io.flutter.app.FlutterApplication"
+25-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:9:9-57
+26        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+26-->[androidx.core:core:1.1.0] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\a528b13ac93e64cafa3d0480e2c93207\core-1.1.0\AndroidManifest.xml:24:18-86
+27        android:debuggable="true"
+28        android:icon="@mipmap/ic_launcher"
+28-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:11:9-43
+29        android:label="chocaycanh"
+29-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:10:9-35
+30        android:supportsRtl="true" >
+30-->[com.facebook.android:facebook-login:5.5.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\8b644bc0b9888e4c2e0814b4b586dc91\jetified-facebook-login-5.5.1\AndroidManifest.xml:28:18-44
+31        <meta-data
+31-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:12:9-107
+32            android:name="com.facebook.sdk.ApplicationId"
+32-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:12:20-65
+33            android:value="@string/facebook_app_id" />
+33-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:12:66-105
+34        <meta-data
+34-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:13:4-16:3
+35            android:name="flutterEmbedding"
+35-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:14:3-34
+36            android:value="2" />
+36-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:15:3-20
+37        <!-- Set up the Sign in with Apple activity, such that it's callable from the browser-redirect -->
+38        <activity
+38-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:18:1-30:12
+39            android:name="com.aboutyou.dart_packages.sign_in_with_apple.SignInWithAppleCallback"
+39-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:19:5-89
+40            android:exported="true" >
+40-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:20:5-28
+41            <intent-filter>
+41-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:22:5-29:21
+42                <action android:name="android.intent.action.VIEW" />
+42-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:23:9-61
+42-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:23:17-58
+43
+44                <category android:name="android.intent.category.DEFAULT" />
+44-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:24:9-68
+44-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:24:19-65
+45                <category android:name="android.intent.category.BROWSABLE" />
+45-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:25:9-70
+45-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:25:19-67
+46
+47                <data android:scheme="signinwithapple" />
+47-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:27:9-50
+47-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:27:15-47
+48                <data android:path="https://cuoituan.vn/longgym/apple/callback" />
+48-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:27:9-50
+49            </intent-filter>
+50        </activity>
+51        <activity
+51-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:31:6-32:108
+52            android:name="com.facebook.FacebookActivity"
+52-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:31:16-60
+53            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+53-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:31:61-156
+54            android:label="@string/app_name"
+54-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:32:73-105
+55            android:theme="@style/com_facebook_activity_theme" />
+55-->[com.facebook.android:facebook-common:5.5.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\0bad8c89a877189668beecf118e7896e\jetified-facebook-common-5.5.1\AndroidManifest.xml:32:13-63
+56        <activity
+56-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:34:7-41:18
+57            android:name="com.facebook.CustomTabActivity"
+57-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:34:17-62
+58            android:exported="true" >
+58-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:34:63-86
+59            <intent-filter>
+59-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:35:11-40:27
+60                <action android:name="android.intent.action.VIEW" />
+60-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:23:9-61
+60-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:23:17-58
+61
+62                <category android:name="android.intent.category.DEFAULT" />
+62-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:24:9-68
+62-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:24:19-65
+63                <category android:name="android.intent.category.BROWSABLE" />
+63-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:25:9-70
+63-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:25:19-67
+64
+65                <data android:scheme="@string/fb_login_protocol_scheme" />
+65-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:27:9-50
+65-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:27:15-47
+66            </intent-filter>
+67        </activity>
+68        <activity
+68-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:42:9-70:20
+69            android:name="net.tanphat.chocaycanh.MainActivity"
+69-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:43:13-41
+70            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+70-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:46:13-163
+71            android:hardwareAccelerated="true"
+71-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:47:13-47
+72            android:launchMode="singleTop"
+72-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:44:13-43
+73            android:theme="@style/LaunchTheme"
+73-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:45:13-47
+74            android:windowSoftInputMode="adjustResize" >
+74-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:48:13-55
+75
+76            <!--
+77                 Specifies an Android theme to apply to this Activity as soon as
+78                 the Android process has started. This theme is visible to the user
+79                 while the Flutter UI initializes. After that, this theme continues
+80                 to determine the Window background behind the Flutter UI.
+81            -->
+82            <meta-data
+82-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:53:13-56:17
+83                android:name="io.flutter.embedding.android.NormalTheme"
+83-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:54:15-70
+84                android:resource="@style/NormalTheme" />
+84-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:55:15-52
+85            <!--
+86                 Displays an Android View that continues showing the launch screen
+87                 Drawable until Flutter paints its first frame, then this splash
+88                 screen fades out. A splash screen is useful to avoid any visual
+89                 gap between the end of Android's launch screen and the painting of
+90                 Flutter's first frame.
+91            -->
+92            <meta-data
+92-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:62:13-65:17
+93                android:name="io.flutter.embedding.android.SplashScreenDrawable"
+93-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:63:15-79
+94                android:resource="@drawable/launch_background" />
+94-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:64:15-61
+95
+96            <intent-filter>
+96-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:66:13-69:29
+97                <action android:name="android.intent.action.MAIN" />
+97-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:67:17-68
+97-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:67:25-66
+98
+99                <category android:name="android.intent.category.LAUNCHER" />
+99-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:68:17-76
+99-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:68:27-74
+100            </intent-filter>
+101        </activity>
+102        <!--
+103             Don't delete the meta-data below.
+104             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+105        -->
+106        <meta-data
+106-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:13:4-16:3
+107            android:name="flutterEmbedding"
+107-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:14:3-34
+108            android:value="2" />
+108-->D:\fluter\ios\chocaycanh\android\app\src\main\AndroidManifest.xml:15:3-20
+109
+110        <provider
+110-->[:image_picker] D:\fluter\ios\chocaycanh\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:11:9-19:20
+111            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+111-->[:image_picker] D:\fluter\ios\chocaycanh\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-82
+112            android:authorities="net.tanphat.chocaycanh.flutter.image_provider"
+112-->[:image_picker] D:\fluter\ios\chocaycanh\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-74
+113            android:exported="false"
+113-->[:image_picker] D:\fluter\ios\chocaycanh\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-37
+114            android:grantUriPermissions="true" >
+114-->[:image_picker] D:\fluter\ios\chocaycanh\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-47
+115            <meta-data
+115-->[:image_picker] D:\fluter\ios\chocaycanh\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-18:75
+116                android:name="android.support.FILE_PROVIDER_PATHS"
+116-->[:image_picker] D:\fluter\ios\chocaycanh\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:17:17-67
+117                android:resource="@xml/flutter_image_picker_file_paths" />
+117-->[:image_picker] D:\fluter\ios\chocaycanh\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:18:17-72
+118        </provider>
+119
+120        <activity android:name="com.facebook.CustomTabMainActivity" />
+120-->[com.facebook.android:facebook-common:5.5.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\0bad8c89a877189668beecf118e7896e\jetified-facebook-common-5.5.1\AndroidManifest.xml:33:9-71
+120-->[com.facebook.android:facebook-common:5.5.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\0bad8c89a877189668beecf118e7896e\jetified-facebook-common-5.5.1\AndroidManifest.xml:33:19-68
+121        <activity
+121-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\56aaec37e438f754b3166c20b53bcb01\jetified-play-services-auth-16.0.1\AndroidManifest.xml:23:9-27:75
+122            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+122-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\56aaec37e438f754b3166c20b53bcb01\jetified-play-services-auth-16.0.1\AndroidManifest.xml:24:13-93
+123            android:excludeFromRecents="true"
+123-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\56aaec37e438f754b3166c20b53bcb01\jetified-play-services-auth-16.0.1\AndroidManifest.xml:25:13-46
+124            android:exported="false"
+124-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\56aaec37e438f754b3166c20b53bcb01\jetified-play-services-auth-16.0.1\AndroidManifest.xml:26:13-37
+125            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+125-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\56aaec37e438f754b3166c20b53bcb01\jetified-play-services-auth-16.0.1\AndroidManifest.xml:27:13-72
+126        <!--
+127            Service handling Google Sign-In user revocation. For apps that do not integrate with
+128            Google Sign-In, this service will never be started.
+129        -->
+130        <service
+130-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\56aaec37e438f754b3166c20b53bcb01\jetified-play-services-auth-16.0.1\AndroidManifest.xml:33:9-36:110
+131            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+131-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\56aaec37e438f754b3166c20b53bcb01\jetified-play-services-auth-16.0.1\AndroidManifest.xml:34:13-89
+132            android:exported="true"
+132-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\56aaec37e438f754b3166c20b53bcb01\jetified-play-services-auth-16.0.1\AndroidManifest.xml:35:13-36
+133            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" />
+133-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\56aaec37e438f754b3166c20b53bcb01\jetified-play-services-auth-16.0.1\AndroidManifest.xml:36:13-107
+134
+135        <activity
+135-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\c18dee5d0bd02053a4b3077c745f9915\jetified-play-services-base-16.0.1\AndroidManifest.xml:23:9-26:75
+136            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+136-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\c18dee5d0bd02053a4b3077c745f9915\jetified-play-services-base-16.0.1\AndroidManifest.xml:24:13-79
+137            android:exported="false"
+137-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\c18dee5d0bd02053a4b3077c745f9915\jetified-play-services-base-16.0.1\AndroidManifest.xml:25:13-37
+138            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+138-->[com.google.android.gms:play-services-base:16.0.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\c18dee5d0bd02053a4b3077c745f9915\jetified-play-services-base-16.0.1\AndroidManifest.xml:26:13-72
+139
+140        <meta-data
+140-->[com.google.android.gms:play-services-basement:16.0.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\8a0cedaadc771684a483e394f45a3e6c\jetified-play-services-basement-16.0.1\AndroidManifest.xml:23:9-25:69
+141            android:name="com.google.android.gms.version"
+141-->[com.google.android.gms:play-services-basement:16.0.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\8a0cedaadc771684a483e394f45a3e6c\jetified-play-services-basement-16.0.1\AndroidManifest.xml:24:13-58
+142            android:value="@integer/google_play_services_version" />
+142-->[com.google.android.gms:play-services-basement:16.0.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\8a0cedaadc771684a483e394f45a3e6c\jetified-play-services-basement-16.0.1\AndroidManifest.xml:25:13-66
+143        <!--
+144         The initialization ContentProvider will call FacebookSdk.sdkInitialize automatically
+145         with the application context. This config is merged in with the host app's manifest,
+146         but there can only be one provider with the same authority activated at any given
+147         point; so if the end user has two or more different apps that use Facebook SDK, only the
+148         first one will be able to use the provider. To work around this problem, we use the
+149         following placeholder in the authority to identify each host application as if it was
+150         a completely different provider.
+151        -->
+152        <provider
+152-->[com.facebook.android:facebook-core:5.5.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\9f023daba80ed47c0fdc697761199279\jetified-facebook-core-5.5.1\AndroidManifest.xml:39:9-42:40
+153            android:name="com.facebook.internal.FacebookInitProvider"
+153-->[com.facebook.android:facebook-core:5.5.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\9f023daba80ed47c0fdc697761199279\jetified-facebook-core-5.5.1\AndroidManifest.xml:40:13-70
+154            android:authorities="net.tanphat.chocaycanh.FacebookInitProvider"
+154-->[com.facebook.android:facebook-core:5.5.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\9f023daba80ed47c0fdc697761199279\jetified-facebook-core-5.5.1\AndroidManifest.xml:41:13-72
+155            android:exported="false" />
+155-->[com.facebook.android:facebook-core:5.5.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\9f023daba80ed47c0fdc697761199279\jetified-facebook-core-5.5.1\AndroidManifest.xml:42:13-37
+156
+157        <receiver
+157-->[com.facebook.android:facebook-core:5.5.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\9f023daba80ed47c0fdc697761199279\jetified-facebook-core-5.5.1\AndroidManifest.xml:44:9-50:20
+158            android:name="com.facebook.CurrentAccessTokenExpirationBroadcastReceiver"
+158-->[com.facebook.android:facebook-core:5.5.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\9f023daba80ed47c0fdc697761199279\jetified-facebook-core-5.5.1\AndroidManifest.xml:45:13-86
+159            android:exported="false" >
+159-->[com.facebook.android:facebook-core:5.5.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\9f023daba80ed47c0fdc697761199279\jetified-facebook-core-5.5.1\AndroidManifest.xml:46:13-37
+160            <intent-filter>
+160-->[com.facebook.android:facebook-core:5.5.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\9f023daba80ed47c0fdc697761199279\jetified-facebook-core-5.5.1\AndroidManifest.xml:47:13-49:29
+161                <action android:name="com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED" />
+161-->[com.facebook.android:facebook-core:5.5.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\9f023daba80ed47c0fdc697761199279\jetified-facebook-core-5.5.1\AndroidManifest.xml:48:17-95
+161-->[com.facebook.android:facebook-core:5.5.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\9f023daba80ed47c0fdc697761199279\jetified-facebook-core-5.5.1\AndroidManifest.xml:48:25-92
+162            </intent-filter>
+163        </receiver>
+164        <receiver
+164-->[com.facebook.android:facebook-core:5.5.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\9f023daba80ed47c0fdc697761199279\jetified-facebook-core-5.5.1\AndroidManifest.xml:51:9-58:20
+165            android:name="com.facebook.CampaignTrackingReceiver"
+165-->[com.facebook.android:facebook-core:5.5.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\9f023daba80ed47c0fdc697761199279\jetified-facebook-core-5.5.1\AndroidManifest.xml:52:13-65
+166            android:exported="true"
+166-->[com.facebook.android:facebook-core:5.5.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\9f023daba80ed47c0fdc697761199279\jetified-facebook-core-5.5.1\AndroidManifest.xml:53:13-36
+167            android:permission="android.permission.INSTALL_PACKAGES" >
+167-->[com.facebook.android:facebook-core:5.5.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\9f023daba80ed47c0fdc697761199279\jetified-facebook-core-5.5.1\AndroidManifest.xml:54:13-69
+168            <intent-filter>
+168-->[com.facebook.android:facebook-core:5.5.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\9f023daba80ed47c0fdc697761199279\jetified-facebook-core-5.5.1\AndroidManifest.xml:55:13-57:29
+169                <action android:name="com.android.vending.INSTALL_REFERRER" />
+169-->[com.facebook.android:facebook-core:5.5.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\9f023daba80ed47c0fdc697761199279\jetified-facebook-core-5.5.1\AndroidManifest.xml:56:17-79
+169-->[com.facebook.android:facebook-core:5.5.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\9f023daba80ed47c0fdc697761199279\jetified-facebook-core-5.5.1\AndroidManifest.xml:56:25-76
+170            </intent-filter>
+171        </receiver>
+172    </application>
+173
+174</manifest>

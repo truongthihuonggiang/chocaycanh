@@ -1,4 +1,5 @@
 import 'package:chocaycanh/components/default_button.dart';
+import 'package:chocaycanh/screens/home/home_screen.dart';
 import 'package:chocaycanh/size_config.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +30,12 @@ class Body extends StatelessWidget {
         Spacer(),
         SizedBox(
             width: SizeConfig.screenWidth * 0.6,
-            child: DefaultButton(text: "Đến trang chính", press: () {})),
+            child: DefaultButton(
+              text: "Đến trang chính",
+              press: () {
+                Navigator.popAndPushNamed(context, HomeScreen.routeName);
+              },
+            )),
         Spacer(),
       ]),
     );
