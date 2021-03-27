@@ -1,3 +1,5 @@
+import 'package:chocaycanh/screens/cuahang/cuahang_screen.dart';
+import 'package:chocaycanh/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:chocaycanh/size_config.dart';
 
@@ -67,14 +69,94 @@ OutlineInputBorder outlineInputBorder() {
   );
 }
 
+final pricetext = TextStyle(
+  fontWeight: FontWeight.bold,
+);
+final striketext =
+    TextStyle(color: kSecondaryColor, decoration: TextDecoration.lineThrough);
+final superwhiteheadtextstyle = TextStyle(
+  fontSize: getProportionateScreenWidth(28),
+  fontWeight: FontWeight.bold,
+  color: Colors.white,
+);
+final superstrokeheadtextstyle = TextStyle(
+  fontSize: getProportionateScreenWidth(28),
+  fontWeight: FontWeight.bold,
+  foreground: Paint()
+    ..style = PaintingStyle.stroke
+    ..strokeWidth = 6
+    ..color = Colors.black87,
+  //color: Colors.white,
+);
+final subwhiteheadtextstyle = TextStyle(
+  fontSize: getProportionateScreenWidth(16),
+  fontWeight: FontWeight.bold,
+  //color: Colors.white,
+  foreground: Paint()
+    ..style = PaintingStyle.stroke
+    ..strokeWidth = 6
+    ..color = Colors.black87,
+);
 final headtextstyle = TextStyle(
-  fontSize: getProportionateScreenWidth(24),
+  fontSize: getProportionateScreenWidth(18),
   fontWeight: FontWeight.bold,
   color: kPrimaryColor,
 );
 final subheadtextstyle = TextStyle(
   fontSize: getProportionateScreenWidth(16),
   fontWeight: FontWeight.bold,
-  color: kPrimaryColor,
+  color: kTextColor,
 );
 final lighttextstyle = TextStyle(color: kTextColor.withOpacity(0.6));
+final textlink = TextStyle(color: kPrimaryColor.withOpacity(0.6));
+String format(double n) {
+  return n.toStringAsFixed(n.truncateToDouble() == n ? 0 : 2);
+}
+
+void LinkHome(context) {
+  //   Navigator.popAndPushNamed(context, HomeScreen.routeName);
+  print('bam cua toi');
+  //  Navigator.popAndPushNamed(context, CuahangScreen.routeName);
+  Navigator.of(context).pushReplacement(PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => HomeScreen(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        var begin = Offset(0.0, 1.0);
+        var end = Offset.zero;
+        var curve = Curves.ease;
+
+        var tween = Tween(begin: begin, end: end);
+        var curvedAnimation = CurvedAnimation(
+          parent: animation,
+          curve: curve,
+        );
+
+        return SlideTransition(
+          position: tween.animate(curvedAnimation),
+          child: child,
+        );
+      }));
+}
+
+void LinkStore(context) {
+  //   Navigator.popAndPushNamed(context, HomeScreen.routeName);
+  print('bam cua toi');
+  //  Navigator.popAndPushNamed(context, CuahangScreen.routeName);
+  Navigator.of(context).pushReplacement(PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => CuahangScreen(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        var begin = Offset(0.0, 1.0);
+        var end = Offset.zero;
+        var curve = Curves.ease;
+
+        var tween = Tween(begin: begin, end: end);
+        var curvedAnimation = CurvedAnimation(
+          parent: animation,
+          curve: curve,
+        );
+
+        return SlideTransition(
+          position: tween.animate(curvedAnimation),
+          child: child,
+        );
+      }));
+}

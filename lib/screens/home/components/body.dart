@@ -22,26 +22,26 @@ class Body extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 HeadText(title: "Danh mục"),
-                // FutureBuilder(
-                //   future: fetchCategories(),
-                //   builder: (context, snapshot) => snapshot.hasData
-                //       ? ListCategory(
-                //           categories: snapshot.data,
-                //         )
-                //       : Center(child: Image.asset("assets/images/ripple.gif")),
-                // ),
+                FutureBuilder(
+                  future: fetchCategories(),
+                  builder: (context, snapshot) => snapshot.hasData
+                      ? ListCategory(
+                          categories: snapshot.data,
+                        )
+                      : Center(child: Image.asset("assets/images/ripple.gif")),
+                ),
                 Divider(
                   height: 5,
                 ),
                 HeadText(title: "Có thể bạn quan tâm"),
-                // FutureBuilder(
-                //   future: fetchProducts(),
-                //   builder: (context, snapshot) => snapshot.hasData
-                //       ? RecommandProducts(
-                //           products: snapshot.data,
-                //         )
-                //       : Center(child: Image.asset("assets/images/ripple.gif")),
-                // ),
+                FutureBuilder(
+                  future: fetchProducts(),
+                  builder: (context, snapshot) => snapshot.hasData
+                      ? RecommandProducts(
+                          products: snapshot.data,
+                        )
+                      : Center(child: Image.asset("assets/images/ripple.gif")),
+                ),
                 Divider(
                   height: 5,
                 ),

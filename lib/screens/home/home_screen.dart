@@ -3,6 +3,7 @@ import 'package:chocaycanh/components/customdrawer.dart';
 import 'package:chocaycanh/constants.dart';
 import 'package:chocaycanh/model/User.dart';
 import 'package:chocaycanh/profile.dart';
+import 'package:chocaycanh/screens/cuahang/cuahang_screen.dart';
 import 'package:chocaycanh/screens/sign_in/sign_in_screen.dart';
 import 'package:chocaycanh/size_config.dart';
 import 'package:chocaycanh/token.dart';
@@ -10,7 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'components/body.dart';
-import 'components/bottom_navbar.dart';
+import '../../components/bottom_navbar.dart';
 import '../profilescreen/profile_avatar.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -21,6 +22,28 @@ class HomeScreen extends StatelessWidget {
   Widget avatar;
   @override
   Widget build(BuildContext context) {
+    // var press4 = () {
+    //   print('bam cua toi');
+    //   //  Navigator.popAndPushNamed(context, CuahangScreen.routeName);
+    //   Navigator.of(context).pushReplacement(PageRouteBuilder(
+    //       pageBuilder: (context, animation, secondaryAnimation) =>
+    //           CuahangScreen(),
+    //       transitionsBuilder: (context, animation, secondaryAnimation, child) {
+    //         return child;
+    //       }));
+    // };
+    var press1 = () {
+      LinkHome(context);
+    };
+    var press4 = () {
+      LinkStore(context);
+    };
+    var press2 = () {
+      LinkHome(context);
+    };
+    var press3 = () {
+      LinkStore(context);
+    };
     getprofile();
     SizeConfig().init(context);
     return Scaffold(
@@ -28,7 +51,13 @@ class HomeScreen extends StatelessWidget {
       appBar: buildAppBar(),
       drawer: buildDrawer(context),
       body: Body(),
-      bottomNavigationBar: BottomNavBar(),
+      bottomNavigationBar: BottomNavBar(
+        press1: press1,
+        press2: press2,
+        press3: press3,
+        press4: press4,
+        numberActive: 0,
+      ),
     );
   }
 
@@ -41,7 +70,8 @@ class HomeScreen extends StatelessWidget {
     final String email = prefs.getString('email') ?? "";
     final String phone = prefs.getString('phone') ?? "";
     final String address = prefs.getString('address') ?? "";
-    final int role_id = prefs.getInt('role_id') ?? "";
+    final int role_id =
+        prefs.getInt('role_id') == null ? "" : prefs.getInt('role_id');
     final int id = prefs.getInt('id') ?? "";
     avatarstr = prefs.getString('avatar') ?? "";
     Myprofile.address = address;

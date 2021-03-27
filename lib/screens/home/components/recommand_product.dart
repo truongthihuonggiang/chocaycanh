@@ -16,7 +16,7 @@ class RecommandProducts extends StatelessWidget {
   Widget build(BuildContext context) {
     double defaultSize = SizeConfig.defaultSize;
     return Padding(
-      padding: EdgeInsets.all(defaultSize * 2),
+      padding: EdgeInsets.all(0),
       child: GridView.builder(
         physics: NeverScrollableScrollPhysics(),
         shrinkWrap: true,

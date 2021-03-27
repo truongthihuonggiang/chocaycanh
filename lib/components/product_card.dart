@@ -20,7 +20,7 @@ class ProductCard extends StatelessWidget {
     return GestureDetector(
       onTap: press,
       child: Container(
-        width: defaultSize * 14.5,
+        width: defaultSize * 18.5,
         decoration: BoxDecoration(
           color: kshopbackColor,
           borderRadius: BorderRadius.circular(30),
@@ -29,19 +29,31 @@ class ProductCard extends StatelessWidget {
           aspectRatio: 0.693,
           child: Column(
             children: [
-              AspectRatio(
-                aspectRatio: 1,
-                child: FadeInImage.assetNetwork(
-                    placeholder: "assets/images/spinner.gif",
-                    image: product.image,
-                    fit: BoxFit.cover),
+              Padding(
+                padding: EdgeInsets.all(defaultSize),
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: FadeInImage.assetNetwork(
+                      placeholder: "assets/images/spinner.gif",
+                      image: product.hinhmoi,
+                      fit: BoxFit.cover),
+                ),
               ),
-              TitleText(title: product.title),
+              Padding(
+                padding: EdgeInsets.only(left: defaultSize / 2),
+                child: TitleText(
+                  title: product.ten,
+                ),
+              ),
               SizedBox(
                 height: defaultSize / 2,
               ),
-              Text("\$${product.price}"),
-              Spacer()
+              Spacer(),
+              Padding(
+                padding: EdgeInsets.only(bottom: defaultSize),
+                child: Text(
+                    "${product.dongiakhuyenmai != null ? product.dongiakhuyenmai : product.dongia} vnđ"),
+              ),
             ],
           ),
         ),

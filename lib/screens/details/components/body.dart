@@ -14,31 +14,54 @@ class Body extends StatelessWidget {
     double defaultSize = SizeConfig.defaultSize;
     return SafeArea(
       child: SingleChildScrollView(
-          child: SizedBox(
+          child: Container(
         width: double.infinity,
-        height: SizeConfig.screenHeight - AppBar().preferredSize.height,
+        //   height: SizeConfig.screenHeight - AppBar().preferredSize.height,
         child: Stack(
           // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ProductInfo(product: product),
-            Positioned(
-                top: defaultSize * 37.5,
+            Container(
+              padding: EdgeInsets.only(
+                top: defaultSize * 40.5,
                 left: 0,
                 right: 0,
-                child: ProductDescription(product: product, press: () {})),
+              ),
+              child: ProductDescription(product: product, press: () {}),
+            ),
             Positioned(
-              top: defaultSize * 9.5,
+              top: defaultSize * 7.5,
               right: -defaultSize * 7.5,
-              child: Image.network(
-                product.image,
-                fit: BoxFit.cover,
-                height: defaultSize * 37.8,
-                width: defaultSize * 36.4,
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: defaultSize,
+                  ),
+                  Image.network(
+                    product.hinhmoi,
+                    fit: BoxFit.cover,
+                    height: defaultSize * 33.8,
+                    width: defaultSize * 32.4,
+                  ),
+                ],
               ),
             )
           ],
         ),
       )),
+    );
+  }
+
+  ListTile buildCuahang() {
+    return ListTile(
+      title: Text(
+        product.tencuahang,
+        textAlign: TextAlign.left,
+      ),
+      leading: Icon(
+        Icons.storefront,
+        color: Colors.green,
+      ),
     );
   }
 }

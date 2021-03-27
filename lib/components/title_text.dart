@@ -33,7 +33,7 @@ class TitleText extends StatelessWidget {
     double defaultSize = SizeConfig.defaultSize;
     return Text(
       title,
-      style: headtextstyle,
+      style: subheadtextstyle,
     );
   }
 }

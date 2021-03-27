@@ -93,18 +93,19 @@ class _DetailProfileState extends State<DetailProfile>
   }
 
   Column buildDetail(User user) {
-    this.email = user.email == "" ? "chưa có thông tin" : user.email;
-    this.phone = user.phone == "" ? "chưa có thông tin" : user.phone;
-    this.address = user.address == "" ? "chưa có thông tin" : user.address;
-    this.firstName = user.address == "" ? "chưa có thông tin" : user.first_name;
-    this.lastName = user.address == "" ? "chưa có thông tin" : user.last_name;
+    this.email = user.email == null ? "chưa có thông tin" : user.email;
+    this.phone = user.phone == null ? "chưa có thông tin" : user.phone;
+    this.address = user.address == null ? "chưa có thông tin" : user.address;
+    this.firstName =
+        user.address == null ? "chưa có thông tin" : user.first_name;
+    this.lastName = user.address == null ? "chưa có thông tin" : user.last_name;
 
     return Column(
       children: [
         buildInfoRow(Icons.account_box, "tên", '$firstName $lastName'),
-        buildInfoRow(Icons.phone_android, "Điện thoại", user.phone),
-        buildInfoRow(Icons.email, "Email", user.email),
-        buildInfoRow(Icons.place, "Địa chỉ", user.address),
+        buildInfoRow(Icons.phone_android, "Điện thoại", phone),
+        buildInfoRow(Icons.email, "Email", email),
+        buildInfoRow(Icons.place, "Địa chỉ", address),
         buildPasswordRow(),
       ],
     );
@@ -181,12 +182,13 @@ class _DetailProfileState extends State<DetailProfile>
     debugPrint('update detail body profilescreen');
 
     setState(() {
-      this.email = user.email == "" ? "chưa có thông tin" : user.email;
-      this.phone = user.phone == "" ? "chưa có thông tin" : user.phone;
-      this.address = user.address == "" ? "chưa có thông tin" : user.address;
+      this.email = user.email == null ? "chưa có thông tin" : user.email;
+      this.phone = user.phone == null ? "chưa có thông tin" : user.phone;
+      this.address = user.address == null ? "chưa có thông tin" : user.address;
       this.firstName =
-          user.address == "" ? "chưa có thông tin" : user.first_name;
-      this.lastName = user.address == "" ? "chưa có thông tin" : user.last_name;
+          user.address == null ? "chưa có thông tin" : user.first_name;
+      this.lastName =
+          user.address == null ? "chưa có thông tin" : user.last_name;
     });
   }
 }

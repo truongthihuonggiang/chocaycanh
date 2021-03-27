@@ -37,13 +37,15 @@ class CategoryCard extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            TitleText(title: category.title),
+                            TitleText(title: category.ten),
                             SizedBox(
                               height: defaultSize,
                             ),
-                            Text("${category.numOfProducts}+ Products",
-                                style: TextStyle(
-                                    color: kTextColor.withOpacity(0.6))),
+                            // Text(
+                            //   "${category.numOfProducts}+ Products",
+                            //   style:
+                            //       TextStyle(color: kTextColor.withOpacity(0.6)),
+                            // ),
                           ],
                         ),
                       )),
@@ -53,10 +55,16 @@ class CategoryCard extends StatelessWidget {
                   left: 0,
                   right: 0,
                   child: AspectRatio(
-                      aspectRatio: 1.15,
-                      child: FadeInImage.assetNetwork(
-                          placeholder: "assets/images/spinner.gif",
-                          image: category.image)),
+                    aspectRatio: 1.15,
+                    child: FadeInImage.assetNetwork(
+                      placeholder: "assets/images/spinner.gif",
+                      imageErrorBuilder: (BuildContext context,
+                          Object exception, StackTrace stackTrace) {
+                        return Text('Lỗi');
+                      },
+                      image: category.hinhanh,
+                    ),
+                  ),
                 )
               ],
             ),
