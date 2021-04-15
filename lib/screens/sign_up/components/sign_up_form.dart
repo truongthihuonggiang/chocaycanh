@@ -1,5 +1,7 @@
 import 'dart:convert';
-
+import 'dart:io';
+import 'package:chocaycanh/screens/sign_up/components/signupcallback.dart';
+import 'package:screen_loader/screen_loader.dart';
 import 'package:chocaycanh/components/default_button.dart';
 import 'package:chocaycanh/components/form_error.dart';
 import 'package:chocaycanh/constants.dart';
@@ -9,11 +11,13 @@ import 'package:chocaycanh/screens/sign_in/components/custom_surfix_icon.dart';
 import 'package:chocaycanh/screens/sign_in/sign_in_screen.dart';
 import 'package:chocaycanh/size_config.dart';
 import 'package:flutter/material.dart';
-import 'package:http_logger/http_logger.dart';
-import 'package:http_middleware/http_with_middleware.dart';
+
 import 'package:http/http.dart' as http;
 
 class SignUpForm extends StatefulWidget {
+  final SignupCallback callback;
+
+  const SignUpForm({Key key, this.callback}) : super(key: key);
   @override
   _SignUpFormState createState() => _SignUpFormState();
 }
@@ -24,6 +28,7 @@ class _SignUpFormState extends State<SignUpForm> {
   String email;
   String password;
   String conform_password;
+
   final List<String> errors = [];
   @override
   Widget build(BuildContext context) {
@@ -56,13 +61,15 @@ class _SignUpFormState extends State<SignUpForm> {
             ),
             DefaultButton(
               text: "Tiếp tục",
-              press: () {
+              press: () async {
                 if (_formkey.currentState.validate()) {
                   _formkey.currentState.save();
+                  FocusScope.of(context).unfocus();
 
                   ///sau khi dang ky xong taikhoan thi chuyen sang complete
                   ///
-                  postSignup(username, email, password);
+                  widget.callback.capnhatloading(true);
+                  await postSignup(username, email, password);
                 }
               },
             )
@@ -73,12 +80,12 @@ class _SignUpFormState extends State<SignUpForm> {
   }
 
   Future<void> postSignup(String username, String mail, String pass) async {
-    HttpWithMiddleware httpClient = HttpWithMiddleware.build(middlewares: [
-      HttpLogger(logLevel: LogLevel.BODY),
-    ]);
+    HttpClient client = new HttpClient();
+    client.badCertificateCallback =
+        ((X509Certificate cert, String host, int port) => true);
 
     String devicename = "app";
-    final http.Response response = await httpClient.post(
+    final http.Response response = await http.post(
       linkRegister,
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
@@ -94,13 +101,17 @@ class _SignUpFormState extends State<SignUpForm> {
     errors.clear();
     debugPrint('trong phuong thuc dang nhap');
     debugPrint('$response.statusCode' + '');
+    // setState(() {
+    //   isloading = false;
+    // });
+    widget.callback.capnhatloading(false);
     if (response.statusCode == 201) {
       // If the server did return a 201 CREATED response,
       // then parse the JSON.
       var requires_email_confirmation =
           jsonDecode(response.body)['requires_email_confirmation'];
-      //  Navigator.pushNamed(context, CompleteProfileScreen.routeName);
-      //  debugPrint('requires_email_confirmation: ' + requires_email_confirmation);
+      // Navigator.pushNamed(context, CompleteProfileScreen.routeName);
+      //debugPrint('requires_email_confirmation: ' + requires_email_confirmation);
       if (requires_email_confirmation == true) {
         Navigator.popAndPushNamed(context, EmailConformScreen.routeName);
       } else {

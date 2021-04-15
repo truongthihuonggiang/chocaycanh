@@ -11,7 +11,7 @@ Future<List<Category>> fetchCategories() async {
   HttpClient client = new HttpClient();
   client.badCertificateCallback =
       ((X509Certificate cert, String host, int port) => true);
-
+  print('url' + apiUrl);
   final response = await http.get(
     apiUrl,
     headers: <String, String>{
@@ -34,7 +34,8 @@ Future<List<Category>> fetchCategories() async {
 //         "username": Myprofile.username,
 //       }),
 //     );
-
+  print('statuscode:' + response.statusCode.toString());
+  print(response.body);
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
     // then parse the JSON.

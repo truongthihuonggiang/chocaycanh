@@ -10,6 +10,7 @@ MERGED from [:flutter_image_compress] D:\fluter\ios\chocaycanh\build\flutter_ima
 MERGED from [:image_picker] D:\fluter\ios\chocaycanh\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-22:12
 MERGED from [:flutter_plugin_android_lifecycle] D:\fluter\ios\chocaycanh\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:flutter_facebook_login] D:\fluter\ios\chocaycanh\build\flutter_facebook_login\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:path_provider] D:\fluter\ios\chocaycanh\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:sign_in_with_apple] D:\fluter\ios\chocaycanh\build\sign_in_with_apple\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:google_sign_in] D:\fluter\ios\chocaycanh\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.android:facebook-login:5.5.1] C:\Users\tthuo\.gradle\caches\transforms-2\files-2.1\8b644bc0b9888e4c2e0814b4b586dc91\jetified-facebook-login-5.5.1\AndroidManifest.xml:21:1-31:12
@@ -212,6 +213,8 @@ MERGED from [:flutter_plugin_android_lifecycle] D:\fluter\ios\chocaycanh\build\f
 MERGED from [:flutter_plugin_android_lifecycle] D:\fluter\ios\chocaycanh\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:flutter_facebook_login] D:\fluter\ios\chocaycanh\build\flutter_facebook_login\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:flutter_facebook_login] D:\fluter\ios\chocaycanh\build\flutter_facebook_login\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:path_provider] D:\fluter\ios\chocaycanh\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:path_provider] D:\fluter\ios\chocaycanh\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:sign_in_with_apple] D:\fluter\ios\chocaycanh\build\sign_in_with_apple\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:sign_in_with_apple] D:\fluter\ios\chocaycanh\build\sign_in_with_apple\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:google_sign_in] D:\fluter\ios\chocaycanh\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44

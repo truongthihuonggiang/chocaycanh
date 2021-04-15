@@ -1,4 +1,5 @@
 import 'package:chocaycanh/screens/EmailConform/email_conform.dart';
+import 'package:chocaycanh/screens/cart/cart_screen.dart';
 import 'package:chocaycanh/screens/complete_profile/complete_profile_screen.dart';
 import 'package:chocaycanh/screens/cuahang/cuahang_screen.dart';
 
@@ -25,4 +26,5 @@ final Map<String, WidgetBuilder> routes = {
   ProfileScreen.routeName: (context) => ProfileScreen(),
   Resetpassword.routeName: (context) => Resetpassword(),
   CuahangScreen.routeName: (context) => CuahangScreen(),
+  CartScreen.routeName: (context) => CartScreen(),
 };

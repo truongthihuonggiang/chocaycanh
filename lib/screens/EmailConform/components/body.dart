@@ -1,12 +1,12 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:chocaycanh/components/FormNotice.dart';
 import 'package:chocaycanh/constants.dart';
 import 'package:chocaycanh/size_config.dart';
 import 'package:chocaycanh/token.dart';
 import 'package:flutter/material.dart';
-import 'package:http_logger/http_logger.dart';
-import 'package:http_middleware/http_with_middleware.dart';
+
 import 'package:http/http.dart' as http;
 
 class ResendEmailRegister extends StatefulWidget {
@@ -56,13 +56,13 @@ class _ResendEmailRegisterState extends State<ResendEmailRegister> {
   }
 
   Future<void> postResendemail() async {
-    HttpWithMiddleware httpClient = HttpWithMiddleware.build(middlewares: [
-      HttpLogger(logLevel: LogLevel.BODY),
-    ]);
+    HttpClient client = new HttpClient();
+    client.badCertificateCallback =
+        ((X509Certificate cert, String host, int port) => true);
 
     String token = Token.token;
 
-    final http.Response response = await httpClient.post(
+    final http.Response response = await http.post(
       "http://10.0.2.2/vanguard/public/api/email/resendm",
       headers: <String, String>{
         'Accept': 'application/json',

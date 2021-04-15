@@ -1,18 +1,22 @@
+import 'dart:io';
+
 import 'package:chocaycanh/components/default_button.dart';
+import 'package:chocaycanh/components/dropdown.dart';
+import 'package:chocaycanh/components/dropdownhuyen.dart';
 import 'package:chocaycanh/components/form_error.dart';
 import 'package:chocaycanh/constants.dart';
 
 import 'package:chocaycanh/screens/profilescreen/detail_interface.dart';
 import 'package:chocaycanh/screens/profilescreen/profile_screen.dart';
 import 'package:chocaycanh/screens/sign_in/components/custom_surfix_icon.dart';
+import 'package:chocaycanh/services/fetchAddress.dart';
 import 'package:chocaycanh/services/service_getprofile.dart';
 import 'package:chocaycanh/size_config.dart';
 import 'package:chocaycanh/token.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:http/http.dart' as http;
-import 'package:http_middleware/http_middleware.dart';
-import 'package:http_logger/http_logger.dart';
+
 import '../../../token.dart';
 import 'dart:convert';
 import '../../../profile.dart';
@@ -32,7 +36,14 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
   String phoneNumber = Myprofile.phone == null ? '' : Myprofile.phone;
   String address = Myprofile.address == null ? '' : Myprofile.address;
   String email;
-
+  String fulladress = "";
+  List<Diadiem> lsTinh = new List();
+  List<Diadiem> lsHuyen = new List();
+  List<Diadiem> lsXa = new List();
+  Diadiem _selectTinh, _selectHuyen, _selectXa;
+  DropDownhuyen tpwidget = null;
+  Widget xawidget = null;
+  bool isloading = true;
   final List<String> errors = [];
   void addError({String error}) {
     if (!errors.contains(error)) {
@@ -52,6 +63,8 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
 
   @override
   Widget build(BuildContext context) {
+    lsTinh.add(new Diadiem(id: 1, ten: "giang"));
+
     firstName = Myprofile.first_name == null ? '' : Myprofile.first_name;
     lastName = Myprofile.last_name == null ? '' : Myprofile.last_name;
     address = Myprofile.address == null ? '' : Myprofile.address;
@@ -60,6 +73,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
     return Form(
       key: _formkey,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           buildFirstNameFormField(),
           SizedBox(
@@ -74,22 +88,44 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
             height: getProportionateScreenHeight(30),
           ),
           buildAddressFormField(),
+          SizedBox(
+            height: getProportionateScreenHeight(30),
+          ),
+          Text('Chọn tỉnh/huyện/xã'),
+          Container(
+            padding: EdgeInsets.only(left: getProportionateScreenWidth(20)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                buildTInh(),
+                Text('Chọn huyện/tp'),
+                tpwidget == null
+                    ? Text(
+                        'chưa có dữ liệu',
+                        style: lighttextstyle,
+                      )
+                    : tpwidget,
+                Text('Chọn xã/phường'),
+                xawidget == null
+                    ? Text('chưa có dữ liệu', style: lighttextstyle)
+                    : xawidget,
+              ],
+            ),
+          ),
           FormError(errors: errors),
           SizedBox(
             height: getProportionateScreenHeight(30),
           ),
           DefaultButton(
-              text: "Lưu",
-              press: () {
-                if (_formkey.currentState.validate()) {
-                  //go to home screen
-                  postdetail();
-                  /////
-                  ///
+            text: "Lưu",
+            press: () async {
+              if (_formkey.currentState.validate()) {
+                await postdetail();
 
-                  Navigator.pop(context);
-                }
-              }),
+                //    Navigator.pop(context);
+              }
+            },
+          ),
           SizedBox(
             height:
                 getProportionateScreenHeight(SizeConfig.screenHeight * 0.02),
@@ -99,12 +135,119 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
     );
   }
 
+  FutureBuilder<List<Diadiem>> buildTInh() {
+    return FutureBuilder(
+      future: fetchTinh(),
+      builder: (context, snapshot) => snapshot.hasData
+          ? DropDown(
+              snapshot.data,
+              onChanged: (value) {
+                _selectTinh = value;
+                print('tentinh:' + _selectTinh.ten);
+                buildHuyen1();
+                //  tpwidget = new Container();
+                // var temp = buildHuyen();
+                // print(temp);
+                setState(() {
+                  tpwidget = null;
+                });
+                //    tpwidget = temp;
+              },
+            )
+          : Center(child: Image.asset("assets/images/ripple.gif")),
+    );
+  }
+
+  void buildHuyen1() async {
+    lsHuyen = await Diadiem.fetchHuyen(_selectTinh.id);
+
+    //(DropDownhuyen) tpwidget as DropDownhuyen
+
+    setState(() {
+      // tpwidget = Container(child: Text('lan' + lsHuyen[0].ten));
+      tpwidget = DropDownhuyen(
+        lsHuyen,
+        onChanged: (value) {
+          _selectHuyen = value;
+          print('ten huyen:' + _selectHuyen.ten);
+          buildXa1();
+          setState(() {
+            xawidget = null;
+          });
+        },
+      );
+    });
+
+    //print(tpwidget);
+  }
+
+  // FutureBuilder<List<Diadiem>> buildHuyen() {
+  //   return FutureBuilder(
+  //     future: Diadiem.fetchHuyen(_selectTinh.id),
+  //     builder: (context, snapshot) => snapshot.hasData
+  //         ? DropDown(
+  //             snapshot.data,
+  //             onChanged: (value) {
+  //               _selectHuyen = value;
+  //               print('ten huyen:' + _selectHuyen.ten);
+  //               setState(() {
+  //                 xawidget = null;
+  //               });
+  //               buildXa1();
+  //             },
+  //           )
+  //         : Center(child: Image.asset("assets/images/ripple.gif")),
+  //   );
+  // }
+
+  void buildXa1() async {
+    lsXa = await fetchXa(_selectHuyen.id);
+
+    //(DropDownhuyen) tpwidget as DropDownhuyen
+
+    setState(() {
+      // tpwidget = Container(child: Text('lan' + lsHuyen[0].ten));
+      xawidget = DropDownhuyen(
+        lsXa,
+        onChanged: (value) {
+          _selectXa = value;
+          print('tenxa:' + _selectXa.ten);
+        },
+      );
+    });
+  }
+
+  // FutureBuilder<List<Diadiem>> buildXa() {
+  //   return FutureBuilder(
+  //     future: fetchXa(_selectHuyen.id),
+  //     builder: (context, snapshot) => snapshot.hasData
+  //         ? DropDown(
+  //             snapshot.data,
+  //             onChanged: (value) {
+  //               _selectXa = value;
+  //               print('tenxa:' + _selectXa.ten);
+  //             },
+  //           )
+  //         : Center(child: Image.asset("assets/images/ripple.gif")),
+  //   );
+  // }
+
   Future<void> postdetail() async {
-    HttpWithMiddleware httpClient = HttpWithMiddleware.build(middlewares: [
-      HttpLogger(logLevel: LogLevel.BODY),
-    ]);
+    HttpClient client = new HttpClient();
+    client.badCertificateCallback =
+        ((X509Certificate cert, String host, int port) => true);
 
     String devicename = "app";
+    fulladress = address +
+        ' ' +
+        _selectXa.ten +
+        ' ' +
+        _selectHuyen.ten +
+        ' ' +
+        _selectTinh.ten;
+    print('fulladdress' + fulladress);
+    print('address' + address);
+    print('phone' + phoneNumber);
 //  DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
 //     AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
     // print('Running on ${androidInfo.model}'); // e.g. "Moto G (4)"
@@ -112,8 +255,8 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
     // //IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
     // //print('Running on ${iosInfo.utsname.machine}'); // e.g. "iPod7,1"
     // //devicename = devicename + iosInfo.utsname.machine.toString();
-
-    final http.Response response = await httpClient.patch(
+    print('api' + linkupdatedetail);
+    final http.Response response = await http.patch(
       linkupdatedetail,
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
@@ -124,10 +267,18 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
         'first_name': firstName,
         'last_name': lastName,
         'phone': phoneNumber,
-        'address': address,
+        'address': fulladress,
+        'provinceid': _selectTinh.id.toString(),
+        'provincename': _selectTinh.ten,
+        'districtid': _selectHuyen.id.toString(),
+        'districtname': _selectHuyen.ten,
+        'wardid': _selectXa.id.toString(),
+        'wardname': _selectXa.ten,
+        'street': address,
       }),
     );
-
+    print('statuscode' + response.statusCode.toString());
+    print('body' + response.body);
     if (response.statusCode == 200) {
       widget.callback.updateDetail(await updatelogin());
     } else {
@@ -175,7 +326,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
         return null;
       },
       decoration: InputDecoration(
-        labelText: "Địa chỉ",
+        labelText: "Số nhà và đường",
         hintText: "Điền địa chỉ của bạn",
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: CustomSuffixIcon(

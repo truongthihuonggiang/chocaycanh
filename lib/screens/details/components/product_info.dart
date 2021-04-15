@@ -2,6 +2,7 @@ import 'package:chocaycanh/constants.dart';
 import 'package:chocaycanh/model/Store.dart';
 import 'package:chocaycanh/model/products.dart';
 import 'package:chocaycanh/screens/storedetail/store_detail.dart';
+import 'package:chocaycanh/screens/truyxuat/truyxuatscreen.dart';
 import 'package:chocaycanh/services/fetchStore.dart';
 import 'package:chocaycanh/size_config.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,9 @@ class ProductInfo extends StatelessWidget {
     ten = ten.toUpperCase();
     Function storepress = () {
       storeNav(context, product.idcuahang);
+    };
+    Function qrpress = () {
+      TraceNav(context, product.madinhdanh);
     };
     return Container(
       padding: EdgeInsets.symmetric(horizontal: defaultSize * 2),
@@ -57,32 +61,33 @@ class ProductInfo extends StatelessWidget {
           buildSoluong(),
           buildPrice(numberFormat, defaultSize),
           Spacer(),
-          buildQrImage(defaultSize),
+          buildQrImage(defaultSize, qrpress),
         ],
       ),
     );
   }
 
-  QrImage buildQrImage(double defaultSize) {
-    return QrImage(
-      data: 'This QR code has an embedded image as well',
-      version: QrVersions.auto,
-      size: defaultSize * 12,
-      gapless: false,
-      //   embeddedImage: AssetImage('assets/images/logo.png'),
-      embeddedImageStyle: QrEmbeddedImageStyle(
-        size: Size(40, 40),
+  Widget buildQrImage(double defaultSize, Function press) {
+    return InkWell(
+      onTap: press,
+      child: QrImage(
+        data: 'This QR code has an embedded image as well',
+        version: QrVersions.auto,
+        size: defaultSize * 12,
+        gapless: false,
+        //   embeddedImage: AssetImage('assets/images/logo.png'),
+        embeddedImageStyle: QrEmbeddedImageStyle(
+          size: Size(40, 40),
+        ),
       ),
     );
   }
 
-  Future<void> storeNav(BuildContext context, int id) async {
-    Store store = await getStore(id);
-
+  Future<void> TraceNav(BuildContext context, String ma) async {
     Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-            builder: (context) => DetailStoreScreen(store: store)));
+            builder: (context) => TruyxuatScreen(madinhdanh: ma)));
   }
 
   Widget buildCuahang(Function press) {

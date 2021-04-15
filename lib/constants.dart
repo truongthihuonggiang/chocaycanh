@@ -3,6 +3,10 @@ import 'package:chocaycanh/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:chocaycanh/size_config.dart';
 
+import 'model/Store.dart';
+import 'screens/storedetail/store_detail.dart';
+import 'services/fetchStore.dart';
+
 // const linkRegister = "http://10.0.2.2/vanguard/public/api/register";
 // const linkLogin = "http://10.0.2.2/vanguard/public/api/login";
 // const linkLoginSocial = "http://10.0.2.2/vanguard/public/api/login/social";
@@ -159,4 +163,11 @@ void LinkStore(context) {
           child: child,
         );
       }));
+}
+
+Future<void> storeNav(BuildContext context, int id) async {
+  Store store = await getStore(id);
+
+  Navigator.pushReplacement(context,
+      MaterialPageRoute(builder: (context) => DetailStoreScreen(store: store)));
 }

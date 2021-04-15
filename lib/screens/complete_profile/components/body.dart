@@ -12,19 +12,25 @@ class Body extends StatelessWidget {
   const Body({Key key, this.callback}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: Padding(
-        padding:
-            EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Text("Hoàn thiện hồ sơ", style: headingStyle),
-              CompleteProfileForm(
-                callback: callback,
-              ),
-            ],
+    return GestureDetector(
+      onTap: () {
+        //  FocusScope.of(context).unfocus();
+        FocusScope.of(context).requestFocus(new FocusNode());
+      },
+      child: SizedBox(
+        width: double.infinity,
+        child: Padding(
+          padding:
+              EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Text("Hoàn thiện hồ sơ", style: headingStyle),
+                CompleteProfileForm(
+                  callback: callback,
+                ),
+              ],
+            ),
           ),
         ),
       ),

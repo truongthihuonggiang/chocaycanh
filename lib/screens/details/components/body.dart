@@ -1,4 +1,5 @@
 import 'package:chocaycanh/model/products.dart';
+import 'package:chocaycanh/services/fetchGiohang.dart';
 import 'package:chocaycanh/size_config.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +28,11 @@ class Body extends StatelessWidget {
                 left: 0,
                 right: 0,
               ),
-              child: ProductDescription(product: product, press: () {}),
+              child: ProductDescription(
+                  product: product,
+                  press: () {
+                    postThemgiohang(product);
+                  }),
             ),
             Positioned(
               top: defaultSize * 7.5,

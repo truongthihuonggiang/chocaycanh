@@ -1,12 +1,11 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:chocaycanh/components/default_button.dart';
 import 'package:chocaycanh/profile.dart';
 import 'package:chocaycanh/screens/sign_in/components/custom_surfix_icon.dart';
 
 import 'package:flutter/material.dart';
-import 'package:http_logger/http_logger.dart';
-import 'package:http_middleware/http_with_middleware.dart';
 
 import '../../constants.dart';
 import '../../size_config.dart';
@@ -88,9 +87,9 @@ class _FormresetState extends State<Formreset> {
   }
 
   Future<void> postreset(String username, String mail, String pass) async {
-    HttpWithMiddleware httpClient = HttpWithMiddleware.build(middlewares: [
-      HttpLogger(logLevel: LogLevel.BODY),
-    ]);
+    HttpClient client = new HttpClient();
+    client.badCertificateCallback =
+        ((X509Certificate cert, String host, int port) => true);
     var dialog = CustomAlertDialog(
         title: "Logout",
         message: "Are you sure, do you want to logout?",
@@ -99,7 +98,7 @@ class _FormresetState extends State<Formreset> {
         negativeBtnText: 'No');
 
     String devicename = "app";
-    final http.Response response = await httpClient.patch(
+    final http.Response response = await http.patch(
       linkupdateauth,
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',

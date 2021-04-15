@@ -1,3 +1,4 @@
+import 'package:chocaycanh/screens/complete_profile/complete_profile_screen.dart';
 import 'package:chocaycanh/screens/splash/splash_screen.dart';
 import 'package:chocaycanh/theme.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: theme(),
-      //   home: SplashScreen(),
+      // home: CompleteProfileScreen(),
       initialRoute: SplashScreen.routeName,
       routes: routes,
     );

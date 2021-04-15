@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:chocaycanh/model/Ccproduct.dart';
 import 'package:chocaycanh/model/products.dart';
 import 'package:http/http.dart' as http;
 
@@ -18,7 +19,7 @@ Future<List<Product>> fetchProducts() async {
     'Accept': 'application/json',
     'Authorization': 'Bearer ' + ' ' + Token.token,
   });
-
+  print(response.body);
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
     // then parse the JSON.
@@ -68,6 +69,35 @@ Future<List<Product>> fetchProductStore(int id) async {
 
     // Return list of products
     return products;
+  } else {
+    // If the server did not return a 200 OK response,
+    // then throw an exception.
+    throw Exception('Failed to load');
+  }
+}
+
+Future<Ccproduct> fetchProductTracebility(String ma) async {
+  String apiUrl = "https://chocaycanh.club/api/truyxuat?ma=" + ma;
+
+  // final response = await http.get(apiUrl);
+  HttpClient client = new HttpClient();
+  client.badCertificateCallback =
+      ((X509Certificate cert, String host, int port) => true);
+  final response = await http.get(apiUrl, headers: <String, String>{
+    'Content-Type': 'application/json; charset=UTF-8',
+    'Accept': 'application/json',
+    'Authorization': 'Bearer ' + ' ' + Token.token,
+  });
+
+  if (response.statusCode == 200) {
+    // If the server did return a 200 OK response,
+    // then parse the JSON.
+    var body = json.decode(response.body);
+
+    Ccproduct product = Ccproduct.fromJson(body);
+
+    // Return list of products
+    return product;
   } else {
     // If the server did not return a 200 OK response,
     // then throw an exception.

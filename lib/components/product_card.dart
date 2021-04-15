@@ -33,10 +33,17 @@ class ProductCard extends StatelessWidget {
                 padding: EdgeInsets.all(defaultSize),
                 child: AspectRatio(
                   aspectRatio: 1,
-                  child: FadeInImage.assetNetwork(
-                      placeholder: "assets/images/spinner.gif",
-                      image: product.hinhmoi,
-                      fit: BoxFit.cover),
+                  child: ClipRRect(
+                    borderRadius:
+                        BorderRadius.circular(getProportionateScreenWidth(10)),
+                    child: FadeInImage.assetNetwork(
+                        placeholder: "assets/images/spinner.gif",
+                        image: product.hinhmoi,
+                        imageErrorBuilder: (context, error, stackTrace) {
+                          return Text('lỗi');
+                        },
+                        fit: BoxFit.cover),
+                  ),
                 ),
               ),
               Padding(

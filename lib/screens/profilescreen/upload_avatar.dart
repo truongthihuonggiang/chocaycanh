@@ -6,9 +6,7 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:http_logger/log_level.dart';
-import 'package:http_logger/logging_middleware.dart';
-import 'package:http_middleware/http_with_middleware.dart';
+
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:image/image.dart' as img;

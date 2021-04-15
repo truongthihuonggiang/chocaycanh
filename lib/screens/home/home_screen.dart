@@ -3,7 +3,7 @@ import 'package:chocaycanh/components/customdrawer.dart';
 import 'package:chocaycanh/constants.dart';
 import 'package:chocaycanh/model/User.dart';
 import 'package:chocaycanh/profile.dart';
-import 'package:chocaycanh/screens/cuahang/cuahang_screen.dart';
+import 'package:chocaycanh/screens/cart/cart_screen.dart';
 import 'package:chocaycanh/screens/sign_in/sign_in_screen.dart';
 import 'package:chocaycanh/size_config.dart';
 import 'package:chocaycanh/token.dart';
@@ -42,13 +42,13 @@ class HomeScreen extends StatelessWidget {
       LinkHome(context);
     };
     var press3 = () {
-      LinkStore(context);
+      Navigator.pushNamed(context, CartScreen.routeName);
     };
     getprofile();
     SizeConfig().init(context);
     return Scaffold(
       key: _scaffoldKey,
-      appBar: buildAppBar(),
+      appBar: buildAppBar(context),
       drawer: buildDrawer(context),
       body: Body(),
       bottomNavigationBar: BottomNavBar(
@@ -145,7 +145,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  AppBar buildAppBar() {
+  AppBar buildAppBar(BuildContext context) {
     return AppBar(
       leading: Builder(builder: (BuildContext context) {
         return IconButton(

@@ -111,7 +111,7 @@ class _DetailProfileState extends State<DetailProfile>
     );
   }
 
-  Row buildInfoRow(IconData icon, String title, String content) {
+  Widget buildInfoRow(IconData icon, String title, String content) {
     return Row(
       children: [
         Padding(
@@ -125,7 +125,7 @@ class _DetailProfileState extends State<DetailProfile>
             ),
           ),
         ),
-        Padding(
+        Container(
           padding: EdgeInsets.all(getProportionateScreenWidth(25)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

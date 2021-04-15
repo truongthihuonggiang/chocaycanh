@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:chocaycanh/components/social_card.dart';
 import 'package:chocaycanh/constants.dart';
@@ -9,9 +10,7 @@ import 'package:chocaycanh/screens/sign_in/components/sign_form.dart';
 import 'package:chocaycanh/size_config.dart';
 import 'package:chocaycanh/token.dart';
 import 'package:flutter/material.dart';
-import 'package:http_logger/log_level.dart';
-import 'package:http_logger/logging_middleware.dart';
-import 'package:http_middleware/http_with_middleware.dart';
+
 import 'no_account_text.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 
@@ -152,12 +151,11 @@ class _GoogleCardState extends State<GoogleCard> {
   }
 
   Future<void> postGoogleSignup(String token) async {
-    HttpWithMiddleware httpClient = HttpWithMiddleware.build(middlewares: [
-      HttpLogger(logLevel: LogLevel.BODY),
-    ]);
-
+    HttpClient httpClient = new HttpClient();
+    httpClient.badCertificateCallback =
+        ((X509Certificate cert, String host, int port) => true);
     String devicename = "app";
-    final http.Response response = await httpClient.post(
+    final http.Response response = await http.post(
       linkLoginSocial,
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
@@ -257,12 +255,12 @@ class _FacebookCardState extends State<FacebookCard> {
   }
 
   Future<void> postFaceSignup(String token) async {
-    HttpWithMiddleware httpClient = HttpWithMiddleware.build(middlewares: [
-      HttpLogger(logLevel: LogLevel.BODY),
-    ]);
+    HttpClient client = new HttpClient();
+    client.badCertificateCallback =
+        ((X509Certificate cert, String host, int port) => true);
 
     String devicename = "app";
-    final http.Response response = await httpClient.post(
+    final http.Response response = await http.post(
       linkLoginSocial,
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
